@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>exam04 문서 내용</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h3>폼 데이터 출력하기</h3>
+        </div>
+        <!--/*-->
+        <div th:text="${dto.name}"></div>
+        <div th:text="${dto.age}"></div>
+        <!--*/-->
+<!-- 모델에 담지 않고, "dto"에 담지 않았기에 밑에처럼 진행 -->
+        <div th:text="${sampleDTO.name}"></div>
+        <div th:text="${sampleDTO.age}"></div>
+
+    </div>
+</body>
+</html>

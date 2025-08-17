@@ -92,4 +92,10 @@ public class ExampleController {
 
         return "example/exam02";
     }
+
+    @GetMapping("/exam05")
+    @ResponseBody
+    public String exam05(){
+        return "Data 전송";
+    }
 }

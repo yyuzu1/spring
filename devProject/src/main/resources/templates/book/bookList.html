@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책 리스트</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="text-center"><h4>책 정보 리스트 및 입력 화면</h4></div>
+        <div class="row">
+            <div class="text-center"><h5>책 리스트</h5></div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">책번호</th>
+                    <th scope="col">책제목</th>
+                    <th scope="col">책저자</th>
+                    <th scope="col">출판사</th>
+                    <th scope="col">출간연도</th>
+                    <th scope="col">책가격</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <th:block th:if="${#strings.isEmpty(bookList)}">
+                    <tr>
+                        <td colspan="6">등록된 책이 존재하지 않습니다.</td>
+                    </tr>
+                </th:block>
+                <th:block th:if="${not #strings.isEmpty(bookList)}">
+                    <tr class="text-left" th:each="book : ${bookList}" th:object="${book}">
+<!--                    위와 같이 object 객체 설정하면 {모델명.변수명}으로 안 써도 됨 ${book.bookId} 대신 아래처럼 *{bookId} 가능-->
+<!--                     th:each="원소를 저장할 대상: ${반복할 리스트}" th:object="{원소를 저장할 대상}"-->
+                        <th scope="row" th:text="*{bookId}"></th>
+                        <td th:text="*{title}"></td>
+                        <td th:text="*{author}"></td>
+                        <td th:text="*{publisher}"></td>
+                        <td th:text="*{publishDate}"></td>
+                        <td th:text="*{price}"></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
